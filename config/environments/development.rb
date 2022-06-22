@@ -4,6 +4,10 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => '127.0.0.1', :port => 1025 }
+  config.action_mailer.raise_delivery_errors = false
+
   config.cache_classes = false
 
   # Do not eager load code on boot.
@@ -11,8 +15,18 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = true
-
+  # mail catcher and devise config
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # smtp settings for mail catcher gem.
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address: '127.0.0.1',
+    port: 1025
+  }
+
+  config.action_mailer.raise_delivery_errors = false
+  
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
