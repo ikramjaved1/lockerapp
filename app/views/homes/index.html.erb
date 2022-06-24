@@ -2,9 +2,9 @@
 <% if user_signed_in? %>
 
   <% if current_user.buyer? %>
-      <%= link_to "Become a seller",  switch_role_home_path(current_user) %><br/>
+    <%= link_to "Become a seller",  switch_role_home_path(current_user) %><br/>
     <% else %>
-          <%= link_to "Create a Product", root_path %><br/>
+      <%= link_to "Create a Product", root_path %><br/>
       <%= link_to "Become a buyer",  switch_role_home_path(current_user) %><br/>
     <% end %>
 

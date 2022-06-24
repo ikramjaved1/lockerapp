@@ -2,7 +2,6 @@ class HomesController < ApplicationController
   def index
   end
 
-
   def switch_role
     @user=User.find(params[:id])
     if @user.buyer?
