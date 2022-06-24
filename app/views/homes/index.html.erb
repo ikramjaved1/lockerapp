@@ -1,3 +1,18 @@
-  <%= link_to "Login", new_user_session_path, class: 'px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900' %>
+<h1>Home page</h1>
+<% if user_signed_in? %>
+
+  <% if current_user.buyer? %>
+      <%= link_to "Become a seller",  switch_role_home_path(current_user) %><br/>
+    <% else %>
+          <%= link_to "Create a Product", root_path %><br/>
+      <%= link_to "Become a buyer",  switch_role_home_path(current_user) %><br/>
+    <% end %>
+
+    <%= current_user.user_name%>
+    <p>current role is <%= current_user.role %> </p>
+    
+    <%= link_to "Logout", destroy_user_session_path, method: :delete , class: 'px-6 py-2 mt-4 text-white bg-red-600 rounded-lg hover:bg-blue-900' %>
+<% else %>
+    <%= link_to "Login", new_user_session_path, class: 'px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900' %>
     <%= link_to "Signup", new_user_registration_path, class: 'mx-3 px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900' %>
-     <%= link_to "Logout", destroy_user_session_path, method: :delete , class: 'px-6 py-2 mt-4 text-white bg-red-600 rounded-lg hover:bg-blue-900' %>
+<% end %>  

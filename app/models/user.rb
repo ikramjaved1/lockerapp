@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
          validates :user_name, presence: true
          validates :email, presence: true
+         
+  enum role: {buyer:0, admin:1 ,seller:2}
 end
