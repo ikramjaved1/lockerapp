@@ -1,4 +1,12 @@
-<h1>Home page</h1>
+
+<nav class="relative w-full flex flex-wrap items-center py-4 bg-gray-100
+  text-gray-500
+  hover:text-gray-700
+  focus:text-gray-700
+  shadow-lg
+  navbar navbar-expand-lg navbar-light
+  nav
+  ">
 <% if user_signed_in? %>
 
   <% if current_user.buyer? %>
@@ -13,6 +21,12 @@
     
     <%= link_to "Logout", destroy_user_session_path, method: :delete , class: 'px-6 py-2 mt-4 text-white bg-red-600 rounded-lg hover:bg-blue-900' %>
 <% else %>
-    <%= link_to "Login", new_user_session_path, class: 'px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900' %>
-    <%= link_to "Signup", new_user_registration_path, class: 'mx-3 px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900' %>
+    <div class="w-full">
+          <%= link_to "Home", root_path, class:'pl-8' %>
+        <div class="float-right">
+          <%= link_to "Login", new_user_session_path, class: 'px-6 py-2 mr-3 text-white bg-blue-600 rounded-lg hover:bg-blue-900' %>
+          <%= link_to "Signup", new_user_registration_path, class: 'mr-12 px-6 py-2  text-white bg-blue-600 rounded-lg hover:bg-blue-900' %>
+        </div>
+    </div>
 <% end %>  
+</nav>
