@@ -10,17 +10,17 @@ class ProductsController < ApplicationController
   end   
   
   # GET method for the new product form   
-  def new   
+  def new
     @product = Product.new   
   end   
   
   # POST method for processing form data   
-  def create   
-    @product = Product.create(product_params) 
+  def create 
+    @product = Product.new(product_params) 
     @product.user_id = current_user.id
     if @product.save   
       flash[:notice] = 'Product added!'   
-      redirect_to products_path   
+      redirect_to root_path   
     else   
       flash[:error] = 'Failed to edit product!'   
       render :new   
@@ -58,7 +58,7 @@ class ProductsController < ApplicationController
   
   # we used strong parameters for the validation of params   
   def product_params   
-    params.require(:product).permit(:product_name, :price, :description)   
+    params.require(:product).permit(:product_name, :price, :description, :user_id)   
   end   
     
 end
