@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.
   
   root to: "homes#index"
-  resources :products
+  resources :products do
+   resources :comments
+  end
+
   resources :homes do
     member do
       get :switch_role
@@ -11,4 +14,5 @@ Rails.application.routes.draw do
     end
   end
 end
+
     

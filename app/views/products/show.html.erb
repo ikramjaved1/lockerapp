@@ -1,25 +1,36 @@
-<div class="container">        
-        <h3>Add a Product</h3>   
+<div class="container"> 
         <div>   
-            <label>Product Name</label>   
+            <label>Created by</label>   
+            <%= @product.user.user_name %>   
+        </div>            
+        <div>   
+            <label>Product Name:</label>   
             <%= @product.product_name %>   
         </div>   
 
         <div>   
-            <label>Price</label>   
+            <label>Price:</label>   
             <%= @product.price %>   
         </div>   
             
         <div>   
-            <label>Description</label>   
+            <label>Description:</label>   
             <%= @product.description %>   
-        </div>   
-        <div>   
-            <label>Created by</label>   
-            <%= @product.user.user_name %>   
-        </div>   
-        
+        </div>    
     <div>   
-        <%= link_to 'Back', { controller: 'products', action: 'index'} %>   
-    </div>   
 </div>
+<%=render 'comments/comment' %> 
+<h1>Reviews</h1>
+<% @product.comments.each do |c|  %>
+<hr>
+  <h2>Commentor:<%= c.Commentor %></h2>
+    <h2>Commentor:<%= c.comment %></h2>
+    <% if c.Commentor == current_user.user_name %>
+   <p>
+    <%= link_to 'Delete Comment', [c.product, c],
+              method: :delete,
+              data: { confirm: "Are you sure?" }, class: 'mx-10 px-6 py-2 my-10 text-white bg-red-600 rounded-lg hover:bg-blue-900' %>
+        </p>
+    <% end %>
+  <hr>
+<% end %>
