@@ -58,7 +58,6 @@ class ProductsController < ApplicationController
   
   # we used strong parameters for the validation of params   
   def product_params   
-    params.require(:product).permit(:product_name, :price, :description, :user_id)   
+    params.require(:product).permit(:product_name, :price, :description, :user_id, :product_image)   
   end   
-    
 end

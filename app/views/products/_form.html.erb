@@ -1,20 +1,27 @@
 <%= form_for(@product)  do |form| %>
-<p>
-    <%= form.label :Product_Name %><br>
-    <%= form.text_field :product_name %>
-</p>
+	<p>
+		<%= form.label :Product_Name %><br>
+		<%= form.text_field :product_name %>
+	</p>
 
-<p>
-    <%= form.label :Description %><br>
-    <%= form.text_area :description %>
-</p>
+	<p>
+		<%= form.label :Description %><br>
+		<%= form.text_area :description %>
+  </p>
 
-<p>
-    <%= form.label :Price %><br>
-    <%= form.number_field :price %>
-</p>
+	<p>
+		<%= form.label :Price %><br>
+		<%= form.number_field :price %>
+	</p>
 
-<p>
-    <%= form.submit %>
-</p>
+	<p>
+		<%= form.label :Product_image %><br>
+		<%= form.file_field :product_image %>
+	</p>
+
+
+	<p>
+		<%= form.submit %>
+	</p>
+
 <% end %>
