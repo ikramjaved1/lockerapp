@@ -1,8 +1,7 @@
 <div class="container">
-
 	<div>
-		<%  if @product.product_image.attached? %>
-      <%= image_tag(@product.product_image, alt: "image is not available", height: 600, width: 600) %>
+	  <%  if @product.product_image.attached? %>
+			<%= image_tag(@product.product_image, alt: "image is not available", height: 600, width: 600) %>
 		<% end %>
 	</div>
 
