@@ -3,42 +3,42 @@
 <html>     
 	<body>   
 		<div class="container"><br>
-						<h3>product list</h3><br>   
+			<h3>product list</h3><br>   
 			<table>   
 				<thead>   
 					<tr>   
-							<th>Name</th>   
-							<th>Price</th>   
-							<th>Description</th>  
-					</tr>   
+						<th>Name</th>   
+						<th>Price</th>   
+						<th>Description</th>  
+				  </tr>   
 				</thead>   
 					<tbody> 
 						<% @products.all.each do |product| %>   
-								<% if (user_signed_in? && current_user.seller?) %> 
-												<tr>   
-														<td><%= product.product_name %></td>   
-														<td><%= product.price %></td>   
-														<td><%= truncate(product.description, :length => 75) %></td>   
-														<div> 
-														<% if product.user_id == current_user.id %>  
-														<td>   
-																<%= link_to 'Show', product_path(product) %>   
-																<%= link_to 'Edit', edit_product_path(product) %>   
-																<%= link_to 'Delete', product_path(product), method: :delete %>   
-														</td> 
-														<% end %>
-														</div>
-												</tr>
-								<% else %>
-										<tr>
-												<td><%= product.product_name %></td>   
-												<td><%= product.price %></td>   
-												<td><%= truncate(product.description, :length => 75) %></td> 
-										</tr>    
-								<% end %>        
+							<% if (user_signed_in? && current_user.seller?) %> 
+								<tr>   
+									<td><%= product.product_name %></td>   
+									<td><%= product.price %></td>   
+									<td><%= truncate(product.description, :length => 75) %></td>   
+									<div>
+										<% if product.user_id == current_user.id %>  
+											<td>   
+												<%= link_to 'Show', product_path(product) %>   
+												<%= link_to 'Edit', edit_product_path(product) %>   
+												<%= link_to 'Delete', product_path(product), method: :delete %>   
+											</td> 
+										<% end %>
+									</div>
+								</tr>
+							<% else %>
+								<tr>
+									<td><%= link_to product.product_name, product_path(product) %></td>   
+									<td><%= product.price %></td>   
+									<td><%= truncate(product.description, :length => 75) %></td> 
+								</tr>    
+							<% end %>  
 						<% end %>   
 					</tbody>   
-				</table><br>
+			</table><br>
 				<div>
 					<% if user_signed_in? && current_user.seller?  %>   
 							<%= link_to 'Add Product', new_product_path %>
@@ -47,4 +47,3 @@
 		</div>   
 	</body>   
 </html>
-

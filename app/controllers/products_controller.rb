@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController   
+class ProductsController < ApplicationController
     # GET method to get all products from database   
   def index   
     @products = Product.all   
@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
   
   # POST method for processing form data   
   def create 
-    @product = Product.new(product_params) 
+    @product = Product.new(product_params)
     @product.user_id = current_user.id
     if @product.save   
       flash[:notice] = 'Product added!'   
@@ -55,9 +55,13 @@ class ProductsController < ApplicationController
       render :destroy   
     end   
   end   
+
+  private
   
   # we used strong parameters for the validation of params   
   def product_params   
     params.require(:product).permit(:product_name, :price, :description, :user_id, :product_image)   
   end   
+  
 end
+

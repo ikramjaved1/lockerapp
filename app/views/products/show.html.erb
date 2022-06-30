@@ -1,32 +1,42 @@
 <div class="container">
 	<div>
 	  <%  if @product.product_image.attached? %>
-			<%= image_tag(@product.product_image, alt: "image is not available", height: 600, width: 600) %>
+			<%= image_tag(@product.product_image, alt: "Image is not available", height: 600, width: 600) %>
 		<% end %>
 	</div>
 
 	<div>   
-			<label>Created by</label>   
-			<%= @product.user.user_name %>   
+		<label>Created by</label>   
+		<%= @product.user.user_name %>   
 	</div> 
 
 	<div>   
-			<label>Product Name:</label>   
-			<%= @product.product_name %>   
+		<label>Product Name:</label>   
+		<%= @product.product_name %>   
 	</div>
 
 	<div>   
-			<label>Price:</label>   
-			<%= @product.price %>   
+		<label>Price:</label>   
+		<%= @product.price %>   
 	</div>   
 			
 	<div>   
-			<label>Description:</label>   
-			<%= @product.description %>   
-	</div>
+		<label>Description:</label>   
+		<%= @product.description %>   
+	</div><br>
+
+	<div>
+		<% if user_signed_in? && current_user.buyer? %>
+			<%= link_to "create order", new_user_session_path , class:"bg-blue-500 hover:bg-blue-700 text-white py-2 px-2 rounded" %>
+		<% elsif user_signed_in? && current_user.present? %>	
+			<%= link_to " " %>
+    <% else %> 
+			<%= link_to "purchase product", new_user_session_path , class:"bg-blue-500 hover:bg-blue-700 text-white py-2 px-2 rounded" %>
+		<% end %>
+	</div><br>
 
 </div>
-<%=render 'comments/comment' %> 
+	<%=render 'comments/comment' %> 
 
 	<h1>Reviews</h1>
 	
@@ -34,7 +44,7 @@
 	<hr>
 		<h2>Commentor:<%= c.Commentor %></h2>
 			<h2>Comment:<%= c.comment %></h2>
-			<% if c.Commentor == current_user.user_name %>
+			<% if user_signed_in? && c.Commentor == current_user.user_name %>
 				<p>
 					<%= link_to 'Delete Comment', [c.product, c],
 										method: :delete,

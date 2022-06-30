@@ -1,27 +1,29 @@
 <div class="container">   
-<%= form_for @product, url: {action: :update} do |f| %>   
+	<%= form_for @product, url: {action: :update} do |f| %>   
+		<h3>Update a Product</h3> 
+			<%= "<div>#{@product.errors.full_messages.first}</div>".html_safe if @product.errors.any? %>    
+				<div>   
+					<label>Product Name</label> <br>  
+					<%= f.text_field :product_name %>   
+				</div>
 
-<h3>Update a Product</h3> 
+				<div>   
+					<label>Price</label><br> 
+					<%= f.text_field :price %>   
+				</div>
 
-<%= "<div>#{@product.errors.full_messages.first}</div>".html_safe if @product.errors.any? %>    
+				<div>   
+					<label>Description</label><br> 
+					<%= f.text_field :description %>   
+				</div>
 
-    <div>   
-            <label>Product Name</label> <br>  
-            <%= f.text_field :product_name %>   
-    </div>   
+				<div>
+					<%= f.label :Product_image %><br>
+					<%= f.file_field :product_image %>
+				</div>   
 
-    <div>   
-            <label>Price</label><br> 
-            <%= f.text_field :price %>   
-    </div>   
-        
-    <div>   
-            <label>Description</label><br> 
-            <%= f.text_field :description %>   
-    </div>   
-
-    <div>   
-        <%= link_to 'Back', { controller: 'products', action: 'index'} %>   
-        <%= f.submit 'Update Product' %>   
-    </div>   
-<% end %>   
+				<div>   
+				<%= link_to 'Back', { controller: 'products', action: 'index'} %>   
+				<%= f.submit 'Update Product' %>
+	<% end %>    
+</div>   
