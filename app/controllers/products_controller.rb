@@ -19,13 +19,13 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user_id = current_user.id
     if @product.save   
-      flash[:notice] = 'Product added!'   
+      flash[:notice] = 'Product added!'
       redirect_to root_path   
-    else   
-      flash[:error] = 'Failed to edit product!'   
-      render :new   
+    else
+      flash[:error] = 'Failed to edit product!'
+      render :new
     end   
-  end   
+  end
   
   # GET method for editing a product based on id   
   def edit   
