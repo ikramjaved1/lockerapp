@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.
-  
+
   devise_for :users
 
   root to: "homes#index"
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   post 'cart_items/:id/reduce' => "cart_items#reduce_quantity", as: "cart_item_reduce"
 
 end
+
 
 
     
