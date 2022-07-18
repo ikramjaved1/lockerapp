@@ -28,7 +28,7 @@
 
 	<div>
 		<% if user_signed_in? && current_user.buyer? %>
-			<%= link_to "Buy Now", new_user_session_path , class:"bg-blue-500 hover:bg-blue-700 text-white py-2 px-2 rounded" %>
+			<%= link_to "Buy Now", new_order_path(:product_id => @product.id), class:"bg-blue-500 hover:bg-blue-700 text-white py-2 px-2 rounded" %>
 			<%= link_to "Add to cart", cart_items_path(id: @product.id), method: :post , class:"bg-blue-500 hover:bg-blue-700 text-white py-2 px-2 rounded" %>
 		<% elsif user_signed_in? && current_user.present? %>	
 			<%= link_to " " %>

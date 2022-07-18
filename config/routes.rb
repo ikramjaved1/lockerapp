@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "homes#index"
+
   resources :products do
    resources :comments
   end
 
+  resources :orders
+  
   resources :homes do
     member do
       get :switch_role
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
       post  :update_quantity
     end
   end
+
 
   post 'cart_items/:id/add' => "cart_items#add_quantity", as: "cart_item_add"
   post 'cart_items/:id/reduce' => "cart_items#reduce_quantity", as: "cart_item_reduce"

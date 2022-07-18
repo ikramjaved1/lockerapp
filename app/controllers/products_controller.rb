@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new   
   end   
-  
+
   # POST method for processing form data   
   def create 
     @product = Product.new(product_params)
@@ -64,4 +64,5 @@ class ProductsController < ApplicationController
   end   
   
 end
+
 
