@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("jquery")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -17,3 +18,28 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 import "@fortawesome/fontawesome-free/js/all";
 
+
+// $(document).on('turbolinks:load', function(){
+//   $(".my-select-box").on('change',function(){
+//     alert("The paragraph was clicked.");
+//   });
+// })
+
+// $(document).on('turbolinks:load', function () {
+//   $(".my-select-box").on("change", function () {
+//     debugger
+//     $.ajax({
+//         url: "/total_price",
+//         data: {
+//           qty: $(this).val(),
+//           id: $(this).attr("id")
+//         },
+//         type: "POST",
+//         error: function () {alert('error');},
+//         success: function (response) {
+//           $('.' + Object.keys(response)[0]).html(Object.values(response)[0] + '$');
+//           $('.cart-price').html(response.total_price + '$');
+//          }
+//     });
+//   });
+// });
